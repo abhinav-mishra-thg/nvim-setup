@@ -11,11 +11,6 @@ If you have tmux, then add the following in `~/.tmux.conf`:
 ```bash
 
 set -g default-terminal "screen-256color"
-set -g prefix C-a
-
-set -g prefix C-a
-unbind C-b
-bind-key C-a send-prefix
 
 unbind %
 bind | split-window -h

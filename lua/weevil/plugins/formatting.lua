@@ -22,11 +22,13 @@ return {
         lua = { "stylua" },
         python = { "ruff_format", "ruff_organize_imports" },
       },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      },
+      -- format_on_save is disabled to prevent conflicts with VS Code workspace settings
+      -- You can still format manually with <leader>mp
+      -- format_on_save = {
+      --   lsp_fallback = true,
+      --   async = false,
+      --   timeout_ms = 1000,
+      -- },
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()

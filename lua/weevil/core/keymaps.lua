@@ -31,3 +31,20 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+-- buffer management
+keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Go to next buffer" }) -- go to next buffer
+keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" }) -- go to previous buffer
+keymap.set("n", "<leader>bx", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+  if #buffers > 1 then
+    vim.cmd("bprevious")
+  end
+  vim.api.nvim_buf_delete(bufnr, { force = false })
+end, { desc = "Close current buffer" })
+keymap.set("n", "<leader>bo", "<cmd>%bdelete|edit#|bdelete#<CR>", { desc = "Close all buffers but current" }) -- close all buffers except current
+keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" }) -- go to previous buffer with Shift+h
+keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Go to next buffer" }) -- go to next buffer with Shift+l
+keymap.set("n", "<S-k>", "<cmd>bfirst<CR>", { desc = "Go to first buffer" }) -- go to first buffer with Shift+k
+keymap.set("n", "<S-j>", "<cmd>blast<CR>", { desc = "Go to last buffer" }) -- go to last buffer with Shift+j

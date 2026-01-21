@@ -12,6 +12,7 @@ return {
       view = {
         width = 35,
         relativenumber = true,
+        preserve_window_proportions = true,
       },
       -- change folder arrow icons
       renderer = {

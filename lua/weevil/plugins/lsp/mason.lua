@@ -73,6 +73,19 @@ return {
 				},
 			}
 
+			-- Configure ts_ls to disable diagnostics for specific projects
+			vim.lsp.config.ts_ls = {
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					local buf_path = vim.api.nvim_buf_get_name(bufnr)
+
+					-- Check if the buffer is under the storefront-luxury project
+					if buf_path:match("^/Users/abhinavmishra/work/storefront%-luxury%.git") then
+						vim.diagnostic.disable(bufnr)
+					end
+				end,
+			}
+
 			-- Setup mason-lspconfig to automatically install and enable servers
 			mason_lspconfig.setup({
 				ensure_installed = {

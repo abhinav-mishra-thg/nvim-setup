@@ -48,3 +48,6 @@ keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" 
 keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Go to next buffer" }) -- go to next buffer with Shift+l
 keymap.set("n", "<S-k>", "<cmd>bfirst<CR>", { desc = "Go to first buffer" }) -- go to first buffer with Shift+k
 keymap.set("n", "<S-j>", "<cmd>blast<CR>", { desc = "Go to last buffer" }) -- go to last buffer with Shift+j
+
+-- markdown rendering (render-markdown.nvim)
+keymap.set("n", "<leader>mv", "<cmd>RenderMarkdown toggle<CR>", { desc = "Toggle markdown rendering" })
